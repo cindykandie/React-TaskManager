@@ -22,26 +22,30 @@ function AddTask({ addTask }) {
   };
 
   return (
-    <div>
+    <div className='flex flex-col gap-3'>
+        <h2 className='capitalize font-bold text-xl underline mt-5'>Add A New Task</h2>
       <input
+        className='border p-1 border-blue-700'
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
+        className='border p-1 border-blue-700'
         type="text"
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
       <input
+        className='border p-1 border-blue-700'
         type="date"
         placeholder="Select Date"
         value={dueDate}
         onChange={(e) => setDueDate(e.target.value)}
       />
-      <input type="button" value="Submit" onClick={handleSubmit} />
+      <input className='border p-1 border-green-700 bg-lime-300 font-semibold' type="button" value="Submit" onClick={handleSubmit} />
     </div>
   );
 }
