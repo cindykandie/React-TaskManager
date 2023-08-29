@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-function TaskItem() {
+function TaskItem({ task, onClick }) {
   return (
-    <div>
-        <h2>Title</h2>
+    <div onClick={onClick}>
+      <h2>{task.title}</h2>
     </div>
-  )
+  );
 }
 
-export default TaskItem
+export default TaskItem;
+

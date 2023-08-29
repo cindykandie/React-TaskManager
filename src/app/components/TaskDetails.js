@@ -1,14 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-function TaskDetails() {
+function TaskDetails({ task }) {
   return (
-    <div>
-        <h2>Title</h2>
-        <p>Description</p>
-        <p>Due Date</p>
-        <p>Status</p>
-    </div>
-  )
+    <main>
+        <div>
+        <h2>{task.title}</h2>
+        <p>{task.description}</p>
+        <p>Due Date: {task.dueDate}</p>
+        <p>Status: {task.status}</p>
+        </div>
+      
+
+      <div className='flex gap-2 my-2'>
+      <button className='bg-blue-400 p-1 rounded font-bold text-white'>In Progress</button>
+      <button className='bg-green-400 p-1 rounded font-bold text-white'>Completed</button>
+      </div>
+    </main>
+  );
 }
 
-export default TaskDetails
+export default TaskDetails;
