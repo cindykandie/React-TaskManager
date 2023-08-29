@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-function TaskItem() {
+function TaskItem({ task, onTouch, onDelete }) {
   return (
-    <div>
-        <h2>Title</h2>
-    </div>
-  )
+    <li className='list-decimal mx-4 my-2 flex justify-between' >
+      <h2 className= 'capitalize' onClick={onTouch}>- {task.title}</h2>
+      <button className='bg-red-400 p-1 rounded text-white font-bold' onClick={onDelete}>Delete</button>
+    </li>
+  );
 }
 
-export default TaskItem
+export default TaskItem;
+
