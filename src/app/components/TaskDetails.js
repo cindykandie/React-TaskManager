@@ -9,7 +9,8 @@ function TaskDetails({ task, tasks, setTasks, onHide, setTaskDetailsVisible }) {
 
   const handleStatusChange = (newStatus) => {
     setStatus(newStatus);
-    setChangesSaved(true);
+    setEditableTask({ ...editableTask, status: newStatus });
+    setChangesSaved(false);
   };
 
 
@@ -23,17 +24,19 @@ function TaskDetails({ task, tasks, setTasks, onHide, setTaskDetailsVisible }) {
 
     // Update the tasks state with the modified list
     setTasks(updatedTasks);
-
     setChangesSaved(true);
     setEditing(false);
     
     setTimeout(() => {
         setChangesSaved(false);
         onHide(); // Hide the TaskDetails component (modal)
-      }, 5000); // 5000 milliseconds = 5 seconds
-      setTaskDetailsVisible(false); // Assuming you have a state for visibility
+      }, 7000000);
+
+      setTaskDetailsVisible(false); 
   
-  };
+  
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+}
   return (
     <main className='bg-blue-100 bg-opacity-95 py-9 p-3 rounded absolute w-[300px] top-[10px] h-[500px] flex flex-col align-center justify-start items-center'>
         <h2 className='underline font-bold mb-3 text-xl'>Task Details</h2>
@@ -75,7 +78,7 @@ function TaskDetails({ task, tasks, setTasks, onHide, setTaskDetailsVisible }) {
         )}
       </div>
 
-      <div className='flex gap-2 my-4'>
+      <div className='flex gap-2 my-4 flex-wrap items-center justify-center'>
         {editing ? (
           <>
             
@@ -103,11 +106,11 @@ function TaskDetails({ task, tasks, setTasks, onHide, setTaskDetailsVisible }) {
            
           </>
         )}
-        {editing && (
+        
           <button className='bg-yellow-400 p-1 rounded font-bold text-white' onClick={handleSave}>
             Save
           </button>
-        )}
+        
       </div>
 
       {changesSaved && <p>Changes saved!</p>}

@@ -8,6 +8,8 @@ function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskDetailsVisible, setTaskDetailsVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredTasks, setFilteredTasks] = useState([]);
 
     // Load tasks from local storage on component mount
     useEffect(() => {
@@ -21,6 +23,12 @@ function TaskList() {
       useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks));
       }, [tasks]);
+      useEffect(() => {
+        const filtered = tasks.filter(task =>
+          task.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredTasks(filtered);
+      }, [tasks, searchQuery]);
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
@@ -34,7 +42,7 @@ function TaskList() {
 
   const handleTaskClick = (task) => {
     setSelectedTask(task);
-    setTaskDetailsVisible(true); // Show the TaskDetails component (modal)
+    setTaskDetailsVisible(true);
   };
 
   const onHideTaskDetails = () => {
@@ -43,9 +51,16 @@ function TaskList() {
 
   return (
     <div className='w-[300px] m-auto my-6 flex flex-col gap-4'>
-      <h2 className='capitalize font-bold text-2xl underline'>your Tasks</h2>
-      <ol className='border p-4'>
-        {tasks.map((task, index) => (
+      <h2 className='capitalize font-bold text-2xl underline'>Your Tasks</h2>
+      <input
+      className='border rounded-sm border-blue-800 p-1'
+        type='text'
+        placeholder='Search tasks'
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+  <ol className='border p-4'>
+        {filteredTasks.map((task, index) => (
           <TaskItem
             key={index}
             task={task}
@@ -54,6 +69,7 @@ function TaskList() {
           />
         ))}
       </ol>
+
 
       <AddTask addTask={addTask} />
       {taskDetailsVisible && // Inside your TaskList component
