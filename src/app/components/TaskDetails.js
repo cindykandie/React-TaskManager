@@ -34,11 +34,11 @@ function TaskDetails({ task, tasks, setTasks, onHide, setTaskDetailsVisible }) {
 
       setTaskDetailsVisible(false); 
   
-  
+
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
 }
   return (
-    <main className='bg-blue-100 bg-opacity-95 py-9 p-3 rounded absolute w-[300px] top-[10px] h-[500px] flex flex-col align-center justify-start items-center'>
+    <main className='bg-blue-100 bg-opacity-95 py-9 p-3 rounded absolute min-w-[200px] max-w-[500px] top-[10px] h-[500px] w-full marker: flex flex-col align-center justify-start items-center '>
         <h2 className='underline font-bold mb-3 text-xl'>Task Details</h2>
       <div className='border bg-slate-300 p-1 rounded w-full'>
         {editing ? (

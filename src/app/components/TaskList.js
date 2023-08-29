@@ -50,7 +50,7 @@ function TaskList() {
   };
 
   return (
-    <div className='w-[300px] m-auto my-6 flex flex-col gap-4'>
+    <div className='min-w-[200px] w-full max-w-[500px] m-auto my-6 flex flex-col gap-4 justify-center align-middle '>
       <h2 className='capitalize font-bold text-2xl underline'>Your Tasks</h2>
       <input
       className='border rounded-sm border-blue-800 p-1'
@@ -72,7 +72,7 @@ function TaskList() {
 
 
       <AddTask addTask={addTask} />
-      {taskDetailsVisible && // Inside your TaskList component
+      {taskDetailsVisible && 
     <TaskDetails
     task={selectedTask}
     tasks={tasks}

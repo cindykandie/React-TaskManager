@@ -6,7 +6,7 @@ import TaskDetails from './components/TaskDetails'
 
 export default function Home() {
   return (
-   <div> 
+   <div className='mx-1'> 
     <TaskList />
    </div>
   )
