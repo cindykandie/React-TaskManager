@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "autoprefixer": "10.4.15",
+    "ionicons": "^7.1.2",
     "next": "13.4.19",
     "postcss": "8.4.28",
     "react": "18.2.0",
